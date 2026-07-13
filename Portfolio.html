@@ -785,3 +785,46 @@ section{padding:6rem 3rem}
   font-weight:700;
 }
 
+/* ==================== CONTACT ==================== */
+#contact{
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+#contact .section-label{justify-content:center;display:flex}
+#contact .section-title{text-align:center}
+#contact .section-sub{margin-left:auto;margin-right:auto;text-align:center}
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:1.5rem;
+  flex-wrap:wrap;
+}
+.contact-link{
+  display:flex;align-items:center;gap:0.5rem;
+  padding:1rem 2rem;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-family:var(--font-mono);
+  font-size:0.75rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text2);
+  transition:all 0.3s;
+  cursor:none;
+}
+.contact-link:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  box-shadow:0 0 20px var(--glow);
+  transform:translateY(-3px);
+}
+.contact-blob{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(0,245,196,0.06),transparent 70%);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
