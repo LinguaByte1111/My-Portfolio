@@ -1400,3 +1400,64 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     },1800);
   });
 });
+
+// ---- SPIRAL CANVAS ----
+const canvas = document.getElementById('spiralCanvas');
+const ctx = canvas.getContext('2d');
+const cx = 180, cy = 180;
+const techLogos = ['🐍','⚡','🧠','📊','🔬','🌐','☁️','🗄️','📱','🎯','🔧','🤖'];
+let angle = 0;
+
+function drawSpiral(){
+  ctx.clearRect(0,0,360,360);
+  const turns = 3;
+  const points = 120;
+  ctx.beginPath();
+  ctx.strokeStyle = 'rgba(0,245,196,0.15)';
+  ctx.lineWidth = 1;
+  for(let i=0;i<points;i++){
+    const t = i/points;
+    const r = 20 + 130*t;
+    const a = t*turns*Math.PI*2 + angle;
+    const x = cx + r*Math.cos(a);
+    const y = cy + r*Math.sin(a);
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+
+  // Orbiting icons
+  techLogos.forEach((logo,i)=>{
+    const t = i/techLogos.length;
+    const r = 20 + 130*t;
+    const a = t*3*Math.PI*2 + angle;
+    const x = cx + r*Math.cos(a);
+    const y = cy + r*Math.sin(a);
+    ctx.save();
+    ctx.font = '22px serif';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.globalAlpha = 0.8 + 0.2*Math.sin(angle + i);
+    ctx.fillText(logo,x,y);
+    ctx.restore();
+  });
+
+  angle += 0.008;
+  requestAnimationFrame(drawSpiral);
+}
+drawSpiral();
+
+// ---- SCROLL REVEAL ----
+const revealEls = document.querySelectorAll('.reveal');
+const expItems = document.querySelectorAll('.exp-item');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.1});
+revealEls.forEach(el=>observer.observe(el));
+expItems.forEach(el=>observer.observe(el));
+
+</script>
+</body>
+</html>
