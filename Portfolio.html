@@ -1277,3 +1277,126 @@ footer{
     <a href="https://leetcode.com/u/linguabyte" target="_blank" class="contact-link">⌨️ LeetCode</a>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Shrutayu Wankhade</span>
+  <span>AI/ML · Python · SQL · Mumbai, India</span>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// ---- LOADER ----
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('fade-out');
+  }, 2800);
+});
+
+// ---- CURSOR ----
+const cursorGlow = document.getElementById('cursor-glow');
+const cursorTrail = document.getElementById('cursor-trail');
+let mx=0,my=0,tx=0,ty=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursorGlow.style.left = mx+'px';
+  cursorGlow.style.top = my+'px';
+  // Comet particle trail - create multiple particles per movement
+  if(Math.random() < 0.6){
+    for(let i=0; i<3; i++){
+      setTimeout(() => {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        const angle = Math.random()*Math.PI*2;
+        const dist = 15+Math.random()*35;
+        spark.style.left = mx+'px';
+        spark.style.top = my+'px';
+        // Gradient between cyan and purple
+        const colors = ['var(--accent)', 'var(--accent2)', 'rgba(0,245,196,0.8)', 'rgba(123,111,255,0.8)'];
+        spark.style.color = colors[Math.floor(Math.random()*colors.length)];
+        spark.style.background = spark.style.color;
+        spark.style.setProperty('--dx', Math.cos(angle)*dist+'px');
+        spark.style.setProperty('--dy', Math.sin(angle)*dist+'px');
+        document.body.appendChild(spark);
+        setTimeout(()=>spark.remove(),1200);
+      }, i*30);
+    }
+  }
+});
+
+function animateCursor(){
+  tx += (mx-tx)*0.15;
+  ty += (my-ty)*0.15;
+  cursorTrail.style.left = tx+'px';
+  cursorTrail.style.top = ty+'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a,button,.project-card,.skill-cat,.cert-card,.contact-link').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    cursorGlow.style.width='50px';cursorGlow.style.height='50px';
+  });
+  el.addEventListener('mouseleave',()=>{
+    cursorGlow.style.width='32px';cursorGlow.style.height='32px';
+  });
+});
+
+// ---- THEME TOGGLE ----
+const toggle = document.getElementById('theme-toggle-hero');
+let isDark = true;
+toggle.addEventListener('click',()=>{
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark?'dark':'light');
+  toggle.textContent = isDark?'🌙':'☀️';
+});
+
+// ---- CYBORG AVATAR ----
+const leftPupil = document.getElementById('left-pupil');
+const rightPupil = document.getElementById('right-pupil');
+const cyborgMouth = document.getElementById('cyborg-mouth');
+const cyborgWrap = document.getElementById('cyborg-wrap');
+const thumbsUp = document.getElementById('thumbs-up');
+
+function getCenter(el){
+  const r = el.getBoundingClientRect();
+  return {x:r.left+r.width/2, y:r.top+r.height/2};
+}
+
+document.addEventListener('mousemove',e=>{
+  const c = getCenter(cyborgWrap);
+  const dx = e.clientX-c.x;
+  const dy = e.clientY-c.y;
+  const angle = Math.atan2(dy,dx);
+  const dist = Math.min(2, Math.hypot(dx,dy)/100);
+  const px = dist*Math.cos(angle);
+  const py = dist*Math.sin(angle);
+  leftPupil.setAttribute('cx', 36+px);
+  leftPupil.setAttribute('cy', 46+py);
+  rightPupil.setAttribute('cx', 64+px);
+  rightPupil.setAttribute('cy', 46+py);
+});
+
+// Blink animation
+setInterval(()=>{
+  leftPupil.setAttribute('r','0.5');
+  rightPupil.setAttribute('r','0.5');
+  setTimeout(()=>{
+    leftPupil.setAttribute('r','2.5');
+    rightPupil.setAttribute('r','2.5');
+  }, 150);
+}, 4000+Math.random()*3000);
+
+// Thumbs up on nav click
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    // Smile
+    cyborgMouth.setAttribute('d','M 38 62 Q 50 74 62 62');
+    thumbsUp.classList.add('show');
+    setTimeout(()=>{
+      cyborgMouth.setAttribute('d','M 40 64 Q 50 70 60 64');
+      thumbsUp.classList.remove('show');
+    },1800);
+  });
+});
