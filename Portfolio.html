@@ -199,3 +199,31 @@ nav{
 .nav-links a:hover{color:var(--accent)}
 .nav-links a:hover::after{width:100%}
 
+/* ==================== CYBORG AVATAR ==================== */
+#cyborg-wrap{
+  position:relative;
+  width:72px;height:72px;
+  flex-shrink:0;
+}
+.cyborg-circle{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:2px solid var(--accent);
+  box-shadow:0 0 20px var(--glow);
+  overflow:hidden;
+  background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;
+  transition:box-shadow 0.3s;
+  position:relative;
+}
+.cyborg-circle:hover{box-shadow:0 0 40px var(--glow)}
+.cyborg-svg{
+  width:60px;height:60px;
+  transition:transform 0.05s ease;
+}
+/* Eyes follow cursor */
+.eye-pupil{
+  transition:cx 0.05s ease,cy 0.05s ease;
+}
+
