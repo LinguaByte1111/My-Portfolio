@@ -28,3 +28,35 @@
   --font-mono: 'Space Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
 }
+
+[data-theme="light"] {
+  --bg: #f0f2f8;
+  --bg2: #e8ebf5;
+  --bg3: #dde1f0;
+  --surface: rgba(0,0,0,0.04);
+  --surface2: rgba(0,0,0,0.07);
+  --border: rgba(0,0,0,0.1);
+  --text: #0d0f1a;
+  --text2: #3a3f5c;
+  --text3: #8a8fa8;
+  --accent: #00c49a;
+  --accent2: #5b4fff;
+  --accent3: #e84040;
+  --glow: rgba(0,196,154,0.12);
+  --glow2: rgba(91,79,255,0.12);
+}
+
+/* ==================== RESET ==================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;cursor:none}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:background 0.4s ease,color 0.4s ease;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{list-style:none}
+
