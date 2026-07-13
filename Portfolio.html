@@ -727,3 +727,60 @@ section{padding:6rem 3rem}
   font-size:0.8rem;
 }
 
+/* ==================== ABOUT / CERTIFICATIONS ==================== */
+#about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6rem;
+  align-items:center;
+}
+.about-text .section-sub{margin-bottom:2rem}
+.cert-cards{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.cert-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:all 0.3s;
+  cursor:none;
+}
+.cert-card:hover{border-color:var(--accent);box-shadow:0 0 20px var(--glow)}
+.cert-icon{font-size:2rem;flex-shrink:0}
+.cert-name{
+  font-family:var(--font-display);
+  font-size:0.95rem;
+  font-weight:700;
+  margin-bottom:0.25rem;
+}
+.cert-issuer{
+  font-family:var(--font-mono);
+  font-size:0.65rem;
+  color:var(--text3);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.about-right{display:flex;flex-direction:column;gap:1.5rem}
+.about-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.5rem;
+  transition:all 0.3s;
+}
+.about-card:hover{border-color:var(--accent2);transform:translateX(6px)}
+.about-card-title{
+  font-family:var(--font-mono);
+  font-size:0.65rem;
+  letter-spacing:0.2em;
+  color:var(--accent2);
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.about-card-val{
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  font-weight:700;
+}
