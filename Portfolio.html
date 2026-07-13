@@ -660,3 +660,69 @@ section{padding:6rem 3rem}
   color:var(--text3);
 }
 
+/* ==================== EXPERIENCE ==================== */
+#experience{background:var(--bg2)}
+.exp-timeline{
+  position:relative;
+  padding-left:2rem;
+}
+.exp-timeline::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent);
+}
+.exp-item{
+  position:relative;
+  padding:0 0 3rem 3rem;
+  opacity:0;
+  transform:translateX(-20px);
+  transition:all 0.6s ease;
+}
+.exp-item.visible{opacity:1;transform:translateX(0)}
+.exp-dot{
+  position:absolute;
+  left:-5px;top:0;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px var(--glow);
+}
+.exp-date{
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  letter-spacing:0.15em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.exp-role{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:800;
+  margin-bottom:0.25rem;
+}
+.exp-company{
+  font-family:var(--font-mono);
+  font-size:0.8rem;
+  color:var(--text2);
+  margin-bottom:1rem;
+}
+.exp-bullets{
+  display:flex;flex-direction:column;gap:0.5rem;
+}
+.exp-bullet{
+  font-size:0.9rem;
+  color:var(--text2);
+  line-height:1.6;
+  padding-left:1rem;
+  position:relative;
+}
+.exp-bullet::before{
+  content:'▹';
+  position:absolute;
+  left:0;
+  color:var(--accent);
+  font-size:0.8rem;
+}
